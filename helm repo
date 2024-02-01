@@ -4,4 +4,6 @@ https://landmaktechnology.github.io/helm-app23/
 
  You can clone it or add it to your helm repo by running
 
-helm repo add https://landmaktechnology.github.io/helm-app23/
+helm repo add Aliasname URL
+
+helm repo add springapp https://landmaktechnology.github.io/helm-app23/
