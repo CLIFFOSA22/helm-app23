@@ -1,27 +1,59 @@
+step 1
+
 Install Helm 3:
 
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
 chmod 700 get_helm.sh
  ./get_helm.sh
 
-Generally we have:
-  custom applications  
-  third party applications
+step 2
+Add helm repo to your helm environment to be able to install other application using helm chart repo. 
 
-Deploying Nginx ingress using helm in kubenetes:
+This helm repo by default is below
 
-Now, add the public stable helm repo for installing the stable charts.
+https://charts.helm.sh/stable
 
-$ helm repo add nginx-stable https://helm.nginx.com/stable
+To add the repo to your helm environment, you run
+
+helm add repo aliasName https://charts.helm.sh/stable
+
+Let us called the aliasname webserver. You run
+
+helm add repo webserver https://charts.helm.sh/stable
+
+update the repo by running
+
+helm repo update
+
+INSTALLATION OF OTHER APPLICATION USING HELM
+
+To install Nginx Ingress
+
+To install ingress, you need to find the helm chartname for nginx by running
+
+helm search repo webserver 
+
+helm search repo webserver | grep nginx
+
+If it is webserver/nginx-ingress  that came out as the chartName, you can now install nginx 
+by running
+
+helm install deploymentName chartName
+
+let us call the deployName to be  nginx
+
+helm install nginx webserver/nginx-ingress
+
+What ever you get as a chartName, you can run the below command to install nginx by running
+
+ANOTHER WAY
+You can also deploy nginx ingress by adding nginx helmm repo directly in your helm enrionment 
+as below
+
+https://helm.nginx.com/stable
 
 helm repo add nginx https://helm.nginx.com/stable
 
-$ helm repo update
+helm repo add nginx https://helm.nginx.com/stable
 
-Let’s install a stable nginx chart and test the setup.
-
-$ helm install nginx nginx-stable/nginx-ingress  
-$ helm install <deploymentName> <chartName>
-List the installed helm chart
-$ helm ls
-----====
+helm repo update
