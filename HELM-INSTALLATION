@@ -56,5 +56,16 @@ deployment name can be any name you want to give to your nginx-ingress applicati
 
 helm install nginx nginx/nginx-ingress
 
+If it says that the deploymentname nginx is still in use, you can change it. let us change it to nginx1
+
+helm install nginx1 nginx/nginx-ingress
+
+run
+
+kubectl get deploy -o wide    or kubectl get pod -o wide   or kubectl get ll
+
+they will be working.
+
+
 
 
